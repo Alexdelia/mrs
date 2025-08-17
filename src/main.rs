@@ -1,3 +1,5 @@
+mod data;
+
 use color_eyre::Result;
 use crossterm::event::{self, Event};
 use ratatui::{DefaultTerminal, Frame};
