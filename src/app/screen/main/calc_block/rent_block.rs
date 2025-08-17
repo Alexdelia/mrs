@@ -22,7 +22,7 @@ impl App {
 			frame,
 			chunks[1],
 			"rent",
-			self.future_row.rent,
+			&self.amount_input.rent,
 			self.active_currency_block == CurrencyBlockType::Rent,
 		);
 	}

@@ -6,13 +6,11 @@ use ratatui::{
 	widgets::{Block, BorderType, Borders, Padding},
 };
 
-use crate::Float;
-
 pub fn render_currency_block(
 	frame: &mut Frame,
 	area: Rect,
 	title: &str,
-	amount: Float,
+	amount: &str,
 	is_active: bool,
 ) {
 	let block = Block::default()
@@ -31,7 +29,7 @@ pub fn render_currency_block(
 		)
 		.padding(Padding::new(0, 0, 1, 1));
 
-	let paragraph = ratatui::widgets::Paragraph::new(amount.to_string())
+	let paragraph = ratatui::widgets::Paragraph::new(amount)
 		.block(block)
 		.style(
 			Style::default()

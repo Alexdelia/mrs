@@ -24,7 +24,7 @@ impl History {
 		Ok(Self { rows })
 	}
 
-	pub fn write(self) -> Result<()> {
+	pub fn write(&mut self) -> Result<()> {
 		let path = Self::file_path()?;
 		let mut wtr = csv::WriterBuilder::new()
 			.has_headers(true)

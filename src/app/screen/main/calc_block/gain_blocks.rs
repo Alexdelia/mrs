@@ -24,14 +24,14 @@ impl App {
 			frame,
 			chunks[1],
 			"gain 1",
-			self.future_row.gain1,
+			&self.amount_input.gain1,
 			self.active_currency_block == CurrencyBlockType::Gain1,
 		);
 		render_currency_block(
 			frame,
 			chunks[3],
 			"gain 2",
-			self.future_row.gain2,
+			&self.amount_input.gain2,
 			self.active_currency_block == CurrencyBlockType::Gain2,
 		);
 	}
