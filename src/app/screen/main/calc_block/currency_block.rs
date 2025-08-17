@@ -1,7 +1,7 @@
 use ratatui::{
 	Frame,
 	layout::{Alignment, Rect},
-	style::{Color, Style},
+	style::{Color, Modifier, Style},
 	text::Line,
 	widgets::{Block, BorderType, Borders, Padding},
 };
@@ -20,16 +20,24 @@ pub fn render_currency_block(
 		.title(Line::from("€").right_aligned())
 		.borders(Borders::ALL)
 		.border_type(BorderType::Rounded)
-		.style(Style::default().fg(if is_active {
-			Color::Cyan
-		} else {
-			Color::DarkGray
-		}))
+		.style(
+			Style::default()
+				.fg(if is_active {
+					Color::Cyan
+				} else {
+					Color::DarkGray
+				})
+				.remove_modifier(Modifier::BOLD),
+		)
 		.padding(Padding::new(0, 0, 1, 1));
 
 	let paragraph = ratatui::widgets::Paragraph::new(amount.to_string())
 		.block(block)
-		.style(Style::default().fg(Color::White))
+		.style(
+			Style::default()
+				.fg(Color::White)
+				.add_modifier(Modifier::BOLD),
+		)
 		.alignment(Alignment::Center);
 
 	frame.render_widget(paragraph, area);
