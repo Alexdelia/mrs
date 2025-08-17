@@ -1,13 +1,22 @@
+use chrono::{Datelike, Months};
+
 use crate::history::{History, HistoryRow};
 
 use super::{AmountInput, App, CurrencyBlockType, Tab};
 
 impl App {
 	pub fn new(history: History) -> Self {
-		let future_row = history
+		let mut future_row = history
 			.rows
 			.first()
 			.map_or_else(|| HistoryRow::default(), |row| row.clone());
+
+		let now = chrono::Utc::now().date_naive();
+		let last_month = now
+			.checked_sub_months(Months::new(1))
+			.expect("failed to subtract 1 month from now");
+		future_row.year = last_month.year().try_into().expect("year out of range");
+		future_row.month = last_month.month().try_into().expect("month out of range");
 
 		let amount_input = AmountInput::from(&future_row);
 
