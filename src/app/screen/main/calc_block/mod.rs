@@ -3,9 +3,6 @@ mod rent_block;
 use ratatui::{
 	Frame,
 	layout::{Constraint, Direction, Layout, Rect},
-	style::{Color, Style},
-	text::Text,
-	widgets::{Block, BorderType, Borders},
 };
 
 use crate::app::App;

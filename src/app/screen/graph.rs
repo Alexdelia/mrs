@@ -1,4 +1,4 @@
-use ratatui::{Frame, buffer::Buffer, layout::Rect, text::Text, widgets::Widget};
+use ratatui::{Frame, text::Text};
 
 use crate::app::App;
 
