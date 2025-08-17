@@ -1,0 +1,31 @@
+name: rust
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        test:
+          [
+            { name: "check", arg: "--all-features" },
+            { name: "test", arg: "--all-features" },
+            { name: "doc", arg: "--all-features" },
+            { name: "clippy", arg: "--all-features -- -D warnings" },
+            { name: "fmt", arg: "--check" },
+          ]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: ${{ matrix.test.name }}
+        run: cargo ${{ matrix.test.name }} --verbose ${{ matrix.test.arg }}
