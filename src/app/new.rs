@@ -9,7 +9,7 @@ impl App {
 		let mut future_row = history
 			.rows
 			.first()
-			.map_or_else(|| HistoryRow::default(), |row| row.clone());
+			.map_or_else(HistoryRow::default, |row| row.clone());
 
 		let now = chrono::Utc::now().date_naive();
 		let last_month = now
