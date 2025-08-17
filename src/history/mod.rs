@@ -29,7 +29,7 @@ impl HistoryRow {
 	}
 
 	pub fn gain1_percentage(&self) -> Float {
-		return Self::percentage(self.gain1, self.rent);
+		Self::percentage(self.gain1, self.rent)
 	}
 
 	pub fn gain2_percentage(&self) -> Float {
