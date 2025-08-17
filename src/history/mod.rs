@@ -9,7 +9,7 @@ pub struct History {
 	pub rows: Vec<HistoryRow>,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Default, Clone, Serialize, Deserialize)]
 pub struct HistoryRow {
 	pub year: u16,
 	pub month: u8,
