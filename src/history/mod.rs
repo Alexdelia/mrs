@@ -19,7 +19,7 @@ pub struct HistoryRow {
 }
 
 impl HistoryRow {
-	#[inline(always)]
+	#[inline]
 	fn percentage(value: Float, total: Float) -> Float {
 		if total == 0.0 {
 			0.0
