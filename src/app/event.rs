@@ -25,6 +25,26 @@ impl App {
 					Tab::Graph => Tab::Main,
 				};
 			}
+			event::KeyCode::Up => {
+				if self.active_currency_block != super::CurrencyBlockType::Rent {
+					self.active_currency_block = super::CurrencyBlockType::Rent;
+				}
+			}
+			event::KeyCode::Down => {
+				if self.active_currency_block == super::CurrencyBlockType::Rent {
+					self.active_currency_block = super::CurrencyBlockType::Gain2;
+				}
+			}
+			event::KeyCode::Left => {
+				if self.active_currency_block != super::CurrencyBlockType::Gain1 {
+					self.active_currency_block = super::CurrencyBlockType::Gain1;
+				}
+			}
+			event::KeyCode::Right => {
+				if self.active_currency_block != super::CurrencyBlockType::Gain2 {
+					self.active_currency_block = super::CurrencyBlockType::Gain2;
+				}
+			}
 			_ => {}
 		}
 	}
