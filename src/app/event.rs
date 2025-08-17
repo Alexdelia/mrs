@@ -1,7 +1,7 @@
 use color_eyre::Result;
 use ratatui::crossterm::event::{self, Event, KeyEventKind};
 
-use super::App;
+use super::{App, Tab};
 
 impl App {
 	pub fn handle_event(&mut self) -> Result<()> {
@@ -18,6 +18,12 @@ impl App {
 		match key_event.code {
 			event::KeyCode::Char('q') | event::KeyCode::Esc => {
 				self.exit = true;
+			}
+			event::KeyCode::Tab => {
+				self.tab = match self.tab {
+					Tab::Main => Tab::Graph,
+					Tab::Graph => Tab::Main,
+				};
 			}
 			_ => {}
 		}
