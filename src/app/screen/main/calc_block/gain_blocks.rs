@@ -8,11 +8,13 @@ use crate::app::{App, CurrencyBlockType};
 use super::{CURRENCY_BLOCK_WIDTH, currency_block::render_currency_block};
 
 impl App {
-	pub fn render_rent_block(&self, frame: &mut Frame, area: Rect) {
+	pub fn render_gain_blocks(&self, frame: &mut Frame, area: Rect) {
 		let chunks = Layout::default()
 			.direction(Direction::Horizontal)
 			.constraints([
 				Constraint::Min(0),
+				Constraint::Max(CURRENCY_BLOCK_WIDTH),
+				Constraint::Length(1),
 				Constraint::Max(CURRENCY_BLOCK_WIDTH),
 				Constraint::Min(0),
 			])
@@ -21,9 +23,16 @@ impl App {
 		render_currency_block(
 			frame,
 			chunks[1],
-			"rent",
-			self.future_row.rent,
-			self.active_currency_block == CurrencyBlockType::Rent,
+			"gain 1",
+			self.future_row.gain1,
+			self.active_currency_block == CurrencyBlockType::Gain1,
+		);
+		render_currency_block(
+			frame,
+			chunks[3],
+			"gain 2",
+			self.future_row.gain2,
+			self.active_currency_block == CurrencyBlockType::Gain2,
 		);
 	}
 }

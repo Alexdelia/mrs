@@ -1,3 +1,5 @@
+pub mod currency_block;
+mod gain_blocks;
 mod rent_block;
 
 use ratatui::{
@@ -6,6 +8,8 @@ use ratatui::{
 };
 
 use crate::app::App;
+
+const CURRENCY_BLOCK_WIDTH: u16 = 13;
 
 impl App {
 	pub fn render_calc_block(&self, frame: &mut Frame, area: Rect) {
@@ -20,5 +24,6 @@ impl App {
 			.split(area);
 
 		self.render_rent_block(frame, chunks[1]);
+		self.render_gain_blocks(frame, chunks[2]);
 	}
 }
