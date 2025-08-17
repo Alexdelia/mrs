@@ -1,14 +1,23 @@
-mod data;
+mod app;
+mod history;
 
 use color_eyre::Result;
 use crossterm::event::{self, Event};
+use history::History;
 use ratatui::{DefaultTerminal, Frame};
+
+type Float = f64;
 
 fn main() -> Result<()> {
 	color_eyre::install()?;
+
+	let history = History::read()?;
+
 	let terminal = ratatui::init();
 	let result = run(terminal);
+
 	ratatui::restore();
+
 	result
 }
 
