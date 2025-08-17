@@ -52,10 +52,10 @@ impl App {
 			event::KeyCode::Enter => {
 				if let Some(last_row) = self.history.rows.last()
 					&& last_row.year == self.future_row.year
-						&& last_row.month == self.future_row.month
-					{
-						self.history.rows.pop();
-					}
+					&& last_row.month == self.future_row.month
+				{
+					self.history.rows.pop();
+				}
 				self.history.rows.push(self.future_row.clone());
 				self.history.write()?;
 			}
