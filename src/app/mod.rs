@@ -1,7 +1,7 @@
 mod event;
 mod new;
-mod render;
 mod run;
+mod screen;
 
 use crate::history::History;
 
