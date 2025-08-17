@@ -1,15 +1,15 @@
-use ratatui::{Frame, buffer::Buffer, layout::Rect, text::Text, widgets::Widget};
+mod graph;
+mod main;
 
-use super::App;
+use ratatui::Frame;
+
+use super::{App, Tab};
 
 impl App {
 	pub fn draw(&self, frame: &mut Frame) {
-		frame.render_widget(self, frame.area());
-	}
-}
-
-impl Widget for &App {
-	fn render(self, area: Rect, buf: &mut Buffer) {
-		Text::from("Hello, world!").render(area, buf);
+		match self.tab {
+			Tab::Main => self.render_main(frame),
+			Tab::Graph => self.render_graph(frame),
+		}
 	}
 }
