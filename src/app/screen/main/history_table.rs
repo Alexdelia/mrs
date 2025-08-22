@@ -11,22 +11,25 @@ impl App {
 	pub fn render_history_table(&self, frame: &mut Frame, area: Rect) {
 		let block = Block::default().borders(Borders::ALL).title("history");
 
-		let header = ["Y", "M", "rent", "gain 1", "%", "gain 2", "%"]
-			.into_iter()
-			.map(Cell::from)
-			.collect::<Row>()
-			.style(Style::default().fg(Color::Gray))
-			.height(1);
+		let header = [
+			"Y", "M", "rent", "gain 1", "gain 2", "percent", "split 1", "split 2",
+		]
+		.into_iter()
+		.map(Cell::from)
+		.collect::<Row>()
+		.style(Style::default().fg(Color::Gray))
+		.height(1);
 
 		let rows = self.history.rows.iter().map(|entry| {
 			Row::new([
 				entry.year.to_string(),
-				entry.month.to_string(),
+				format!("{:02}", entry.month),
 				format!("{:.2}€", entry.rent),
 				format!("{:.2}€", entry.gain1),
-				format!("{:.2}%", entry.gain1_percentage()),
 				format!("{:.2}€", entry.gain2),
-				format!("{:.2}%", entry.gain2_percentage()),
+				format!("{:.2}%", entry.percentage()),
+				format!("{:.2}€", entry.split_gain1()),
+				format!("{:.2}€", entry.split_gain2()),
 			])
 			.style(Style::default().fg(Color::White))
 		});
@@ -40,9 +43,10 @@ impl App {
 				Constraint::Length(2),
 				currency_width,
 				currency_width,
-				percentage_width,
 				currency_width,
 				percentage_width,
+				currency_width,
+				currency_width,
 			],
 		)
 		.header(header)

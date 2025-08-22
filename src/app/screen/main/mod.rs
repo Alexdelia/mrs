@@ -12,7 +12,7 @@ impl App {
 	pub fn render_main(&self, frame: &mut Frame) {
 		let chunks = Layout::default()
 			.direction(Direction::Horizontal)
-			.constraints([Constraint::Fill(1), Constraint::Length(53)])
+			.constraints([Constraint::Fill(1), Constraint::Length(74)])
 			.split(frame.area());
 
 		self.render_calc_block(frame, chunks[0]);
