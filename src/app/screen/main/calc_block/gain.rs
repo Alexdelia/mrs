@@ -5,7 +5,7 @@ use ratatui::{
 
 use crate::app::{App, CurrencyBlockType};
 
-use super::{CURRENCY_BLOCK_WIDTH, currency::render_currency_block};
+use super::{CURRENCY_BLOCK_WIDTH, currency::render_interactive_currency_block};
 
 impl App {
 	pub fn render_gain_blocks(&self, frame: &mut Frame, area: Rect) {
@@ -20,14 +20,14 @@ impl App {
 			])
 			.split(area);
 
-		render_currency_block(
+		render_interactive_currency_block(
 			frame,
 			chunks[1],
 			"gain 1",
 			&self.amount_input.gain1,
 			self.active_currency_block == CurrencyBlockType::Gain1,
 		);
-		render_currency_block(
+		render_interactive_currency_block(
 			frame,
 			chunks[3],
 			"gain 2",

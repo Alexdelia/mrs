@@ -5,7 +5,7 @@ use ratatui::{
 
 use crate::app::{App, CurrencyBlockType};
 
-use super::{CURRENCY_BLOCK_WIDTH, currency::render_currency_block};
+use super::{CURRENCY_BLOCK_WIDTH, currency::render_interactive_currency_block};
 
 impl App {
 	pub fn render_rent_block(&self, frame: &mut Frame, area: Rect) {
@@ -18,7 +18,7 @@ impl App {
 			])
 			.split(area);
 
-		render_currency_block(
+		render_interactive_currency_block(
 			frame,
 			chunks[1],
 			"rent",

@@ -4,6 +4,7 @@ mod gain;
 mod month;
 mod percentage;
 mod rent;
+mod split_gain;
 
 use ratatui::{
 	Frame,
@@ -37,6 +38,6 @@ impl App {
 		self.render_gain_blocks(frame, chunks[4]);
 
 		self.render_percentage_block(frame, chunks[6]);
-		// self.render_split_blocks(frame, chunks[7]);
+		self.render_split_gain_blocks(frame, chunks[7]);
 	}
 }
