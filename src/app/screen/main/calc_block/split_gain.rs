@@ -26,14 +26,14 @@ impl App {
 			chunks[1],
 			"split 1",
 			&format!("{:.2}", self.future_row.split_gain1()),
-			Color::Magenta,
+			Color::LightMagenta,
 		);
 		render_currency_block(
 			frame,
 			chunks[3],
 			"split 2",
 			&format!("{:.2}", self.future_row.split_gain2()),
-			Color::Magenta,
+			Color::LightMagenta,
 		);
 	}
 }

@@ -21,7 +21,7 @@ impl App {
 			"percentage",
 			"%",
 			&format_percentage(self.future_row.percentage()),
-			Color::Green,
+			Color::Magenta,
 		);
 	}
 }
