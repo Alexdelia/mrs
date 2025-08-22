@@ -9,7 +9,10 @@ use crate::app::App;
 
 impl App {
 	pub fn render_history_table(&self, frame: &mut Frame, area: Rect) {
-		let block = Block::default().borders(Borders::ALL).title("history");
+		let block = Block::default()
+			.borders(Borders::ALL)
+			.title("history")
+			.style(Color::DarkGray);
 
 		let header = [
 			"Y", "M", "rent", "gain 1", "gain 2", "percent", "split 1", "split 2",
