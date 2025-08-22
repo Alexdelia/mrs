@@ -4,7 +4,7 @@ use ratatui::{
 	style::Color,
 };
 
-use crate::app::App;
+use crate::app::{App, DEFAULT_BLOCK_BORDER_COLOR};
 
 use super::{CURRENCY_BLOCK_WIDTH, amount::render_amount_block};
 
@@ -29,7 +29,7 @@ impl App {
 			"€",
 			&format!("{:.2}", sum),
 			if sum == 0.0 {
-				Color::DarkGray
+				DEFAULT_BLOCK_BORDER_COLOR
 			} else if delta > 0.01 {
 				Color::Red
 			} else if delta < 0.001 {

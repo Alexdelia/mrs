@@ -1,5 +1,7 @@
 use ratatui::{Frame, layout::Rect, style::Color};
 
+use crate::app::DEFAULT_BLOCK_BORDER_COLOR;
+
 use super::amount::render_amount_block;
 
 pub fn render_interactive_currency_block(
@@ -17,7 +19,7 @@ pub fn render_interactive_currency_block(
 		if is_active {
 			Color::Cyan
 		} else {
-			Color::DarkGray
+			DEFAULT_BLOCK_BORDER_COLOR
 		},
 	);
 }

@@ -5,7 +5,7 @@ use ratatui::{
 	widgets::{Block, BorderType, Borders},
 };
 
-use crate::app::App;
+use crate::app::{App, DEFAULT_BLOCK_BORDER_COLOR};
 
 impl App {
 	pub fn render_month_block(&self, frame: &mut Frame, area: Rect) {
@@ -22,7 +22,7 @@ impl App {
 			.title("period")
 			.borders(Borders::ALL)
 			.border_type(BorderType::Rounded)
-			.style(Color::DarkGray);
+			.style(DEFAULT_BLOCK_BORDER_COLOR);
 
 		let paragraph = ratatui::widgets::Paragraph::new(format!(
 			"{:04}-{:02}",

@@ -5,14 +5,14 @@ use ratatui::{
 	widgets::{Block, Borders, Cell, Row, Table},
 };
 
-use crate::app::App;
+use crate::app::{App, DEFAULT_BLOCK_BORDER_COLOR};
 
 impl App {
 	pub fn render_history_table(&self, frame: &mut Frame, area: Rect) {
 		let block = Block::default()
 			.borders(Borders::ALL)
 			.title("history")
-			.style(Color::DarkGray);
+			.style(DEFAULT_BLOCK_BORDER_COLOR);
 
 		let header = [
 			"Y", "M", "rent", "gain 1", "gain 2", "percent", "split 1", "split 2",

@@ -3,7 +3,11 @@ mod new;
 mod run;
 mod screen;
 
+use ratatui::style::Color;
+
 use crate::history::{History, HistoryRow};
+
+const DEFAULT_BLOCK_BORDER_COLOR: Color = Color::DarkGray;
 
 pub struct App {
 	pub tab: Tab,
