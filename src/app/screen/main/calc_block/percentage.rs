@@ -4,7 +4,7 @@ use ratatui::{
 	style::Color,
 };
 
-use crate::app::App;
+use crate::{Float, app::App};
 
 use super::amount::render_amount_block;
 
@@ -20,11 +20,15 @@ impl App {
 			chunks[1],
 			"percentage",
 			"%",
-			&(format!("{:.8}", &self.future_row.percentage())
-				.trim_end_matches('0')
-				.trim_end_matches('.')
-				.to_string()),
-			Color::Green,
+			&format_percentage(self.future_row.percentage()),
+			Color::Magenta,
 		);
 	}
+}
+
+fn format_percentage(amount: Float) -> String {
+	format!("{:.8}", amount)
+		.trim_end_matches('0')
+		.trim_end_matches('.')
+		.to_string()
 }
