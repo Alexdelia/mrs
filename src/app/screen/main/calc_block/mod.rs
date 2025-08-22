@@ -5,6 +5,7 @@ mod month;
 mod percentage;
 mod rent;
 mod split_gain;
+mod sum_validation;
 
 use ratatui::{
 	Frame,
@@ -22,12 +23,13 @@ impl App {
 			.constraints([
 				Constraint::Min(0),
 				Constraint::Length(3), // year - month
-				Constraint::Length(1), // gap
+				Constraint::Max(1),    // gap
 				Constraint::Max(5),    // rent
 				Constraint::Max(5),    // gain 1 & gain 2
-				Constraint::Length(1), // gap
+				Constraint::Max(1),    // gap
 				Constraint::Max(5),    // %
 				Constraint::Max(5),    // split 1 & split 2
+				Constraint::Max(5),    // sum validation
 				Constraint::Min(0),
 			])
 			.split(area);
@@ -39,5 +41,6 @@ impl App {
 
 		self.render_percentage_block(frame, chunks[6]);
 		self.render_split_gain_blocks(frame, chunks[7]);
+		self.render_sum_validation_block(frame, chunks[8]);
 	}
 }

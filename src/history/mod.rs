@@ -33,11 +33,11 @@ impl HistoryRow {
 	}
 
 	pub fn split_gain1(&self) -> Float {
-		self.gain1 * self.split_ratio()
+		((self.gain1 * self.split_ratio()) * 100.0).round() / 100.0
 	}
 
 	pub fn split_gain2(&self) -> Float {
-		self.gain2 * self.split_ratio()
+		((self.gain2 * self.split_ratio()) * 100.0).round() / 100.0
 	}
 }
 
