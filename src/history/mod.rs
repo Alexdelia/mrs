@@ -28,16 +28,24 @@ impl HistoryRow {
 		self.rent / total_gain
 	}
 
+	#[inline]
 	pub fn percentage(&self) -> Float {
 		self.split_ratio() * 100.0
 	}
 
-	pub fn split_gain1(&self) -> Float {
-		self.gain1 * self.split_ratio()
+	#[inline]
+	fn round_currency(value: Float) -> Float {
+		(value * 100.0).round() / 100.0
 	}
 
+	#[inline]
+	pub fn split_gain1(&self) -> Float {
+		Self::round_currency(self.gain1 * self.split_ratio())
+	}
+
+	#[inline]
 	pub fn split_gain2(&self) -> Float {
-		self.gain2 * self.split_ratio()
+		Self::round_currency(self.gain2 * self.split_ratio())
 	}
 }
 
