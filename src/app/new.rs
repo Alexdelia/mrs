@@ -8,7 +8,7 @@ impl App {
 	pub fn new(history: History) -> Self {
 		let mut future_row = history
 			.rows
-			.first()
+			.last()
 			.map_or_else(HistoryRow::default, |row| row.clone());
 
 		let now = chrono::Utc::now().date_naive();
